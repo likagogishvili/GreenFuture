@@ -1,8 +1,10 @@
-import Header from "./Header/Header";
+// import Header from "./Header/Header";
+
+import Landing from "./Landing/Landing";
 
 function App() {
   return (
-    <Header/>
+    <Landing/>
   );
 }
 
