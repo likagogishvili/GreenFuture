@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: "SeoulBold";
+  src: local("SeoulBold"),
+    url("./assets/fonts/SeoulHangang-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SeoulLight";
+  src: local("SeoulLight"),
+    url("./assets/fonts/SeoulHangang-Light.ttf") format("truetype");
+}
+* {
+  font-family: "SeoulLight" !important;
+}
+
+h3,h2 {
+  font-family: "SeoulBold" !important;
+}
+
+
+// code {
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+//     monospace;
+// }

@@ -1,0 +1,47 @@
+.parent_container {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size:cover;
+
+  main {
+    width: 90%;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+
+    section {
+      height: 70%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      background-position: right;
+      margin-top: 26px;
+      padding: 20px;
+      h2 {
+        font-size: 4rem;
+        color: #ffff;
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 1.5rem;
+        color: #ffff;
+        width: 50%;
+        line-height: 2.5rem;
+      }
+      .header_button {
+        margin-top: 2%;
+        color: rgb(255, 255, 255) !important;
+        border: 2px solid #fff;
+        font-size: 1rem;
+      }
+    }
+  }
+}
