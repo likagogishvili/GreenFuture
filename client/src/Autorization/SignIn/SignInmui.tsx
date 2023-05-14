@@ -11,7 +11,11 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {signInBG} from '../../assets/signIn/signIn'
+import {
+  signInBG,
+  signUpBG,
+  resetBG,
+} from "../../assets/autorization/autorization";
 
 export {
   Avatar,
@@ -28,5 +32,7 @@ export {
   Typography,
   createTheme,
   ThemeProvider,
-  signInBG
+  signInBG,
+  signUpBG,
+  resetBG,
 };

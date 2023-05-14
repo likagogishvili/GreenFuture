@@ -1,5 +1,4 @@
-import * as muiComp from "./SignInmui";
-import "./SignIn.scss";
+import * as muiComp from ".././SignIn/SignInmui";
 function Copyright(props: any) {
   return (
     <muiComp.Typography
@@ -18,7 +17,7 @@ function Copyright(props: any) {
 
 const theme = muiComp.createTheme();
 
-export default function SignIn() {
+export default function Reset() {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,7 +37,7 @@ export default function SignIn() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: `url(${muiComp.signInBG})`,
+            backgroundImage: `url(${muiComp.resetBG})`,
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -70,7 +69,7 @@ export default function SignIn() {
               <muiComp.LockOutlinedIcon />
             </muiComp.Avatar>
             <muiComp.Typography component="h1" variant="h5">
-              Sign in
+              Reset Password
             </muiComp.Typography>
             <muiComp.Box
               component="form"
@@ -111,16 +110,16 @@ export default function SignIn() {
                 sx={{ mt: 3, mb: 2 }}
                 color="success"
               >
-                Sign In
+                Reset Password
               </muiComp.Button>
               <muiComp.Grid container>
                 <muiComp.Grid item xs>
                   <muiComp.Link
-                    href="resetPassword"
+                    href="signIn"
                     variant="body2"
                     className="greenTxt"
                   >
-                    Forgot password?
+                    {"Already have an account? Sign In"}
                   </muiComp.Link>
                 </muiComp.Grid>
                 <muiComp.Grid item>
