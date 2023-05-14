@@ -1,5 +1,7 @@
 // import Header from "./Header/Header";
-import SignInSide from "./Autorization/SignIn/SignIn";
+import Reset from "./Autorization/ResetPassword/Reset";
+import SignIn from "./Autorization/SignIn/SignIn";
+import SignUp from "./Autorization/SignUp/SignUp";
 import Landing from "./Landing/Landing";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
@@ -7,7 +9,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/signIn" element={<SignInSide />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/resetPassword" element={<Reset />} />
+
+
       </Routes>
     </Router>
   );
