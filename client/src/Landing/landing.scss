@@ -1,5 +1,5 @@
 .parent_container {
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -21,7 +21,7 @@
       height: 70%;
       width: 100%;
       background-repeat: no-repeat;
-      background-size: 40%;
+      background-size: 30%;
       background-position: right;
       margin-top: 26px;
       padding: 20px;
