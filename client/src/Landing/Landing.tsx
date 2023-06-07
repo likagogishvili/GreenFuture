@@ -1,10 +1,11 @@
 import "./landing.scss";
 import * as landingImg from "../assets/img/landign/landingImg";
 import Header from "../Header/Header";
-import * as muiComponents from "./landingMui";
+import { Button } from "../Header/headerMui";
 import { Link } from "react-router-dom";
 import useStore from "../store/store";
 import { landingTexts } from "../assets/texts/landing";
+import AnimatedHeading from "./AnimatedHeading";
 
 function Landing() {
   const language = useStore((state) => state.language);
@@ -16,12 +17,12 @@ function Landing() {
       <main>
         <Header />
         <section style={{ backgroundImage: `url(${landingImg.tree})` }}>
-          <h2>{landingTexts[language].heading}</h2>
-          <p>{landingTexts[language].description}</p>
+          <AnimatedHeading language={language} landingTexts={landingTexts} />
+
           <Link to="signIn">
-            <muiComponents.Button variant="outlined" className="header_button">
+            <Button variant="outlined" className="header_button">
               {landingTexts[language].button}
-            </muiComponents.Button>
+            </Button>
           </Link>
         </section>
       </main>
