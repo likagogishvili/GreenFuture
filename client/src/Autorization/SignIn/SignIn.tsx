@@ -1,5 +1,7 @@
 import * as muiComp from "./SignInmui";
 import "./SignIn.scss";
+import { auth } from "../../assets/texts/auth";
+import useStore from "../../store/store";
 function Copyright(props: any) {
   return (
     <muiComp.Typography
@@ -19,6 +21,7 @@ function Copyright(props: any) {
 const theme = muiComp.createTheme();
 
 export default function SignIn() {
+  const language = useStore((state) => state.language);
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -70,7 +73,7 @@ export default function SignIn() {
               <muiComp.LockOutlinedIcon />
             </muiComp.Avatar>
             <muiComp.Typography component="h1" variant="h5">
-              Sign in
+              {auth[language].signIn}
             </muiComp.Typography>
             <muiComp.Box
               component="form"
@@ -83,7 +86,7 @@ export default function SignIn() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={auth[language].email}
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -94,16 +97,13 @@ export default function SignIn() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={auth[language].password}
                 type="password"
                 id="password"
                 autoComplete="current-password"
                 color="success"
               />
-              <muiComp.FormControlLabel
-                control={<muiComp.Checkbox value="remember" color="success" />}
-                label="Remember me"
-              />
+
               <muiComp.Button
                 type="submit"
                 fullWidth
@@ -111,7 +111,7 @@ export default function SignIn() {
                 sx={{ mt: 3, mb: 2 }}
                 color="success"
               >
-                Sign In
+                {auth[language].signIn}
               </muiComp.Button>
               <muiComp.Grid container>
                 <muiComp.Grid item xs>
@@ -120,7 +120,7 @@ export default function SignIn() {
                     variant="body2"
                     className="greenTxt"
                   >
-                    Forgot password?
+                    {auth[language].resetPassword}
                   </muiComp.Link>
                 </muiComp.Grid>
                 <muiComp.Grid item>
@@ -129,7 +129,7 @@ export default function SignIn() {
                     variant="body2"
                     className="greenTxt"
                   >
-                    {"Don't have an account? Sign Up"}
+                    {auth[language].create}
                   </muiComp.Link>
                 </muiComp.Grid>
               </muiComp.Grid>

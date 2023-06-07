@@ -1,3 +1,5 @@
+import { auth } from "../../assets/texts/auth";
+import useStore from "../../store/store";
 import * as muiComp from ".././SignIn/SignInmui";
 function Copyright(props: any) {
   return (
@@ -10,7 +12,6 @@ function Copyright(props: any) {
       {"Copyright © "}
       <muiComp.Link color="inherit"></muiComp.Link>
       {new Date().getFullYear()}
-      {"."}
     </muiComp.Typography>
   );
 }
@@ -18,6 +19,7 @@ function Copyright(props: any) {
 const theme = muiComp.createTheme();
 
 export default function Reset() {
+  const language = useStore((state) => state.language);
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -69,7 +71,7 @@ export default function Reset() {
               <muiComp.LockOutlinedIcon />
             </muiComp.Avatar>
             <muiComp.Typography component="h1" variant="h5">
-              Reset Password
+              {auth[language].resetPassword}
             </muiComp.Typography>
             <muiComp.Box
               component="form"
@@ -82,27 +84,13 @@ export default function Reset() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={auth[language].email}
                 name="email"
                 autoComplete="email"
                 autoFocus
                 color="success"
               />
-              <muiComp.TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                color="success"
-              />
-              <muiComp.FormControlLabel
-                control={<muiComp.Checkbox value="remember" color="success" />}
-                label="Remember me"
-              />
+
               <muiComp.Button
                 type="submit"
                 fullWidth
@@ -110,7 +98,7 @@ export default function Reset() {
                 sx={{ mt: 3, mb: 2 }}
                 color="success"
               >
-                Reset Password
+                {auth[language].resetPassword}
               </muiComp.Button>
               <muiComp.Grid container>
                 <muiComp.Grid item xs>
@@ -119,7 +107,7 @@ export default function Reset() {
                     variant="body2"
                     className="greenTxt"
                   >
-                    {"Already have an account? Sign In"}
+                    {auth[language].signIn}
                   </muiComp.Link>
                 </muiComp.Grid>
                 <muiComp.Grid item>
@@ -128,7 +116,7 @@ export default function Reset() {
                     variant="body2"
                     className="greenTxt"
                   >
-                    {"Don't have an account? Sign Up"}
+                    {auth[language].create}
                   </muiComp.Link>
                 </muiComp.Grid>
               </muiComp.Grid>

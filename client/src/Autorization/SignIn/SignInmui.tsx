@@ -15,7 +15,7 @@ import {
   signInBG,
   signUpBG,
   resetBG,
-} from "../../assets/autorization/autorization";
+} from "../../assets/img/autorization/autorization";
 
 export {
   Avatar,

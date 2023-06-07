@@ -6,24 +6,72 @@ body {
 @font-face {
   font-family: "SeoulBold";
   src: local("SeoulBold"),
-    url("./assets/fonts/SeoulHangang-Bold.ttf") format("truetype");
+    // url("./assets/fonts/SeoulHangang-Bold.ttf") format("truetype");
+    url("./assets/fonts/mg_glaho_drunk.ttf") format("truetype");
+
 }
 
 @font-face {
   font-family: "SeoulLight";
   src: local("SeoulLight"),
-    url("./assets/fonts/SeoulHangang-Light.ttf") format("truetype");
+    // url("./assets/fonts/SeoulHangang-Light.ttf") format("truetype");
+    url("./assets/fonts/mg_glaho_drunk.ttf") format("truetype");
+
 }
 * {
   font-family: "SeoulLight" !important;
 }
 
-h3,h2 {
+h3,
+h2 {
   font-family: "SeoulBold" !important;
 }
+::selection {
+  background: #688d4b;
+}
 
+body::-webkit-scrollbar {
+  width: 10px;
+  /* width of the entire scrollbar */
+}
 
-// code {
-//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-//     monospace;
-// }
+body::-webkit-scrollbar-track {
+  background: transparent;
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #688d4b;
+  /* color of the scroll thumb */
+}
+
+html,
+input,
+label,
+select,
+div,
+p,
+.headerImg,
+.CircularProgressbar,
+.CircularProgressbar-path,
+.CircularProgressbar-text,
+.CircularProgressbar-trail,
+option {
+  cursor: url("assets/cursors/cursor.cur"), auto !important;
+}
+
+a,
+button,
+path,
+svg,
+rect,
+#s,
+#q,
+img,
+tspan,
+span,
+.moon_icon,
+.info_icon,
+.header_icons {
+  cursor: url("assets/cursors/cursorPointer.cur"), auto !important;
+}

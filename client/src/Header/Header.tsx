@@ -1,29 +1,30 @@
+import useStore from "../store/store";
 import * as muiComponents from "./headerMui";
 import { useState } from "react";
-import { logo } from "../assets/logo/logo";
+import { logo } from "../assets/img/logo/logo";
 import "./header.scss";
-const pages = ["About us", "places"];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
+import { langIcon } from "../assets/img/lang/translate";
+import { landingTexts } from "../assets/texts/landing";
 function Header() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  // const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const language = useStore((state) => state.language);
+  const setLanguage = useStore((state) => state.setLanguage);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
-
+  const handleLanguage = () => {
+    if (language === "ka") {
+      setLanguage("en");
+    } else {
+      setLanguage("ka");
+    }
+  };
+  console.log(language);
   return (
     <header>
       <muiComponents.Container maxWidth="xl">
@@ -77,7 +78,7 @@ function Header() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {landingTexts[language].pages.map((page) => (
                 <muiComponents.MenuItem key={page} onClick={handleCloseNavMenu}>
                   <muiComponents.Typography textAlign="center">
                     {page}
@@ -105,7 +106,7 @@ function Header() {
           <muiComponents.Box
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            {pages.map((page) => (
+            {landingTexts[language].pages.map((page) => (
               <muiComponents.Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -121,37 +122,9 @@ function Header() {
               </muiComponents.Button>
             ))}
           </muiComponents.Box>
-
-          {/* <muiComponents.Box sx={{ flexGrow: 0 }}>
-            <muiComponents.Tooltip title="Open settings">
-              <muiComponents.IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <muiComponents.Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </muiComponents.IconButton>
-            </muiComponents.Tooltip>
-            <muiComponents.Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <muiComponents.MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <muiComponents.Typography textAlign="center">{setting}</muiComponents.Typography>
-                </muiComponents.MenuItem>
-              ))}
-            </muiComponents.Menu>
-          </muiComponents.Box>
-           */}
+          <span onClick={handleLanguage}>
+            <img src={langIcon} alt="" />
+          </span>
         </muiComponents.Toolbar>
       </muiComponents.Container>
     </header>

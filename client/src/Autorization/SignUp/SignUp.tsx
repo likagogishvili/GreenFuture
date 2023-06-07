@@ -1,3 +1,5 @@
+import { auth } from "../../assets/texts/auth";
+import useStore from "../../store/store";
 import * as muiComp from ".././SignIn/SignInmui";
 function Copyright(props: any) {
   return (
@@ -18,6 +20,7 @@ function Copyright(props: any) {
 const theme = muiComp.createTheme();
 
 export default function SignUp() {
+  const language = useStore((state) => state.language);
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -69,7 +72,7 @@ export default function SignUp() {
               <muiComp.LockOutlinedIcon />
             </muiComp.Avatar>
             <muiComp.Typography component="h1" variant="h5">
-              Sign Up
+              {auth[language].create}
             </muiComp.Typography>
             <muiComp.Box
               component="form"
@@ -81,19 +84,32 @@ export default function SignUp() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="name"
+                label={auth[language].name}
+                name="name"
+                autoComplete="name"
                 autoFocus
                 color="success"
               />
+
+              <muiComp.TextField
+                margin="normal"
+                required
+                fullWidth
+                id="lname"
+                label={auth[language].lname}
+                name="lname"
+                autoComplete="lname"
+                autoFocus
+                color="success"
+              />
+
               <muiComp.TextField
                 margin="normal"
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={auth[language].password}
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -101,7 +117,7 @@ export default function SignUp() {
               />
               <muiComp.FormControlLabel
                 control={<muiComp.Checkbox value="remember" color="success" />}
-                label="Remember me"
+                label={auth[language].agree}
               />
               <muiComp.Button
                 type="submit"
@@ -110,17 +126,25 @@ export default function SignUp() {
                 sx={{ mt: 3, mb: 2 }}
                 color="success"
               >
-                Sign Up
+                {auth[language].create}
               </muiComp.Button>
               <muiComp.Grid container>
                 <muiComp.Grid item xs>
-                  <muiComp.Link href="#" variant="body2" className="greenTxt">
-                    Forgot password?
+                  <muiComp.Link
+                    href="resetPassword"
+                    variant="body2"
+                    className="greenTxt"
+                  >
+                    {auth[language].resetPassword}
                   </muiComp.Link>
                 </muiComp.Grid>
                 <muiComp.Grid item>
-                  <muiComp.Link href="#" variant="body2" className="greenTxt">
-                    {"Don't have an account? Sign Up"}
+                  <muiComp.Link
+                    href="signIn"
+                    variant="body2"
+                    className="greenTxt"
+                  >
+                    {auth[language].signIn}
                   </muiComp.Link>
                 </muiComp.Grid>
               </muiComp.Grid>
