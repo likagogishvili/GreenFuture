@@ -10,6 +10,8 @@ let auth = {
     lname: "გვარი",
     adress: "საცხოვრებელი ადგილი",
     agree: "ვეთანხმები წესებს და პირობებს",
+    gender: ["ქალი", "კაცი"],
+
   },
   en: {
     signIn: "Sign in",
@@ -22,6 +24,8 @@ let auth = {
     lname: "Last Name",
     adress: "Address",
     agree: "I agree to the terms and conditions",
+    gender: ["Female", "Male"],
+
   },
 };
 

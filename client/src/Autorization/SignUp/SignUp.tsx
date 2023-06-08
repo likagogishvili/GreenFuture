@@ -115,6 +115,18 @@ export default function SignUp() {
                 autoComplete="current-password"
                 color="success"
               />
+              <muiComp.RadioGroup name="use-radio-group" className="d-flex" defaultValue="first">
+                <muiComp.FormControlLabel
+                  value="first"
+                  label={auth[language].gender[0]}
+                  control={<muiComp.Radio />}
+                />
+                <muiComp.FormControlLabel
+                  value="second"
+                  label={auth[language].gender[1]}
+                  control={<muiComp.Radio />}
+                />
+              </muiComp.RadioGroup>
               <muiComp.FormControlLabel
                 control={<muiComp.Checkbox value="remember" color="success" />}
                 label={auth[language].agree}
