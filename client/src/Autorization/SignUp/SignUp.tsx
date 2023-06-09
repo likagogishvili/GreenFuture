@@ -1,33 +1,23 @@
+import { useState } from "react";
 import { auth } from "../../assets/texts/auth";
 import useStore from "../../store/store";
 import * as muiComp from ".././SignIn/SignInmui";
-function Copyright(props: any) {
-  return (
-    <muiComp.Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <muiComp.Link color="inherit"></muiComp.Link>
-      {new Date().getFullYear()}
-      {"."}
-    </muiComp.Typography>
-  );
-}
 
 const theme = muiComp.createTheme();
 
 export default function SignUp() {
   const language = useStore((state) => state.language);
+  const [region, setRegion] = useState(auth[language].regions[0]);
+
+  const handleRegionChange = (event: any) => {
+    setRegion(event.target.value);
+  };
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const formData = new FormData(event.currentTarget);
+    const formValues = Object.fromEntries(formData.entries());
+    console.log(formValues);
   };
 
   return (
@@ -108,14 +98,19 @@ export default function SignUp() {
                 margin="normal"
                 required
                 fullWidth
-                name="password"
-                label={auth[language].password}
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                id="email"
+                label={auth[language].email}
+                name="email"
+                autoComplete="email"
+                autoFocus
                 color="success"
               />
-              <muiComp.RadioGroup name="use-radio-group" className="d-flex" defaultValue="first">
+
+              <muiComp.RadioGroup
+                name="gender"
+                className="radioGroup"
+                defaultValue="first"
+              >
                 <muiComp.FormControlLabel
                   value="first"
                   label={auth[language].gender[0]}
@@ -127,10 +122,42 @@ export default function SignUp() {
                   control={<muiComp.Radio />}
                 />
               </muiComp.RadioGroup>
+
+              <muiComp.FormControl fullWidth sx={{ mt: 2, mb: 2 }}>
+                <muiComp.InputLabel id="demo-simple-select-label">
+                  {auth[language].regionPlaceholder}
+                </muiComp.InputLabel>
+                <muiComp.Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={region} // Set the value of the select component
+                  onChange={handleRegionChange} // Handle select value changes
+                >
+                  {auth[language].regions.map((name) => (
+                    <muiComp.MenuItem key={name} value={name}>
+                      {name}
+                    </muiComp.MenuItem>
+                  ))}
+                </muiComp.Select>
+              </muiComp.FormControl>
+
+              <muiComp.TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label={auth[language].password}
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                color="success"
+              />
+
               <muiComp.FormControlLabel
                 control={<muiComp.Checkbox value="remember" color="success" />}
                 label={auth[language].agree}
               />
+
               <muiComp.Button
                 type="submit"
                 fullWidth
@@ -140,6 +167,7 @@ export default function SignUp() {
               >
                 {auth[language].create}
               </muiComp.Button>
+
               <muiComp.Grid container>
                 <muiComp.Grid item xs>
                   <muiComp.Link
@@ -160,7 +188,6 @@ export default function SignUp() {
                   </muiComp.Link>
                 </muiComp.Grid>
               </muiComp.Grid>
-              <Copyright sx={{ mt: 5 }} />
             </muiComp.Box>
           </muiComp.Box>
         </muiComp.Grid>

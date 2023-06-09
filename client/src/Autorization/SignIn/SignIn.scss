@@ -1,5 +1,10 @@
 $green-color: #2f7c31;
 
+.radioGroup{
+  display: flex;
+   flex-direction: row !important;
+   gap:10px;
+}
 .greenTxt {
   color: $green-color !important;
   font-size: 1rem !important;

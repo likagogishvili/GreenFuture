@@ -11,7 +11,22 @@ let auth = {
     adress: "საცხოვრებელი ადგილი",
     agree: "ვეთანხმები წესებს და პირობებს",
     gender: ["ქალი", "კაცი"],
-
+    regionPlaceholder: "აირჩიეთ რეგიონი",
+    regions: [
+      "თბილისი",
+      "აჭარის ა/რ",
+      "გურია",
+      "იმერეთი",
+      "კახეთი",
+      "მცხეთა-მთიანეთი",
+      "რაჭა-ლეჩხუმი და ქვემო სვანეთი",
+      "სამეგრელო-ზემო სვანეთი",
+      "სამცხე-ჯავახეთი",
+      "ქვემო ქართლი",
+      "შიდა ქართლი",
+      "ცხინვალის რეგიონი",
+      "აფხაზეთის ა.რ.",
+    ],
   },
   en: {
     signIn: "Sign in",
@@ -25,7 +40,22 @@ let auth = {
     adress: "Address",
     agree: "I agree to the terms and conditions",
     gender: ["Female", "Male"],
-
+    regionPlaceholder: "Select a region",
+    regions: [
+      "Tbilisi",
+      "Adjara A/R",
+      "Guria",
+      "Imereti",
+      "Kakheti",
+      "Mtsketa-Mtianeti",
+      "Racha-Lechkhumi and Kvemo Svaneti",
+      "Samegrelo-Zemo Svaneti",
+      "Samtskhe-Javakheti",
+      "Kvemo Kartli",
+      "Shida Kartli",
+      "Tskhinvali region",
+      "A.R. of Abkhazia",
+    ],
   },
 };
 

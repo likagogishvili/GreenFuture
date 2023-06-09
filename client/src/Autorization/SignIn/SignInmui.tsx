@@ -13,6 +13,12 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from '@mui/material/FormHelperText';
+
+import Select from "@mui/material/Select";
 import {
   signInBG,
   signUpBG,
@@ -39,4 +45,9 @@ export {
   resetBG,
   Radio,
   RadioGroup,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  FormHelperText
 };
