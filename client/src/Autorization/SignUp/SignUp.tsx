@@ -2,22 +2,36 @@ import { useState } from "react";
 import { auth } from "../../assets/texts/auth";
 import useStore from "../../store/store";
 import * as muiComp from ".././SignIn/SignInmui";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const theme = muiComp.createTheme();
 
 export default function SignUp() {
   const language = useStore((state) => state.language);
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required(auth[language].formEroors.name),
+    lname: Yup.string().required(auth[language].formEroors.lname),
+    email: Yup.string()
+      .email(auth[language].formEroors.emailVal)
+      .required(auth[language].formEroors.emailReq),
+    password: Yup.string()
+      .required(auth[language].formEroors.password)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        auth[language].formEroors.passwordVal
+      ),
+    agree: Yup.boolean().oneOf([true], auth[language].formEroors.agree),
+    gender: Yup.string().required(auth[language].formEroors.gender),
+  });
   const [region, setRegion] = useState(auth[language].regions[0]);
 
   const handleRegionChange = (event: any) => {
     setRegion(event.target.value);
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const formValues = Object.fromEntries(formData.entries());
-    console.log(formValues);
+  const handleSubmit = (values: any) => {
+    console.log(values);
   };
 
   return (
@@ -64,131 +78,184 @@ export default function SignUp() {
             <muiComp.Typography component="h1" variant="h5">
               {auth[language].create}
             </muiComp.Typography>
-            <muiComp.Box
-              component="form"
-              noValidate
+            <Formik
+              initialValues={{
+                name: "",
+                lname: "",
+                email: "",
+                password: "",
+                agree: false,
+                gender: "",
+              }}
+              validationSchema={validationSchema}
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
             >
-              <muiComp.TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label={auth[language].name}
-                name="name"
-                autoComplete="name"
-                autoFocus
-                color="success"
-              />
-
-              <muiComp.TextField
-                margin="normal"
-                required
-                fullWidth
-                id="lname"
-                label={auth[language].lname}
-                name="lname"
-                autoComplete="lname"
-                autoFocus
-                color="success"
-              />
-
-              <muiComp.TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label={auth[language].email}
-                name="email"
-                autoComplete="email"
-                autoFocus
-                color="success"
-              />
-
-              <muiComp.RadioGroup
-                name="gender"
-                className="radioGroup"
-                defaultValue="first"
-              >
-                <muiComp.FormControlLabel
-                  value="first"
-                  label={auth[language].gender[0]}
-                  control={<muiComp.Radio />}
+              <Form style={{ width: "80%" }}>
+                <Field
+                  as={muiComp.TextField}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label={auth[language].name}
+                  name="name"
+                  color="success"
                 />
-                <muiComp.FormControlLabel
-                  value="second"
-                  label={auth[language].gender[1]}
-                  control={<muiComp.Radio />}
+                <ErrorMessage
+                  name="name"
+                  component={muiComp.Typography}
+                  // @ts-ignore
+                  variant="caption"
+                  color="error"
                 />
-              </muiComp.RadioGroup>
 
-              <muiComp.FormControl fullWidth sx={{ mt: 2, mb: 2 }}>
-                <muiComp.InputLabel id="demo-simple-select-label">
-                  {auth[language].regionPlaceholder}
-                </muiComp.InputLabel>
-                <muiComp.Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={region} // Set the value of the select component
-                  onChange={handleRegionChange} // Handle select value changes
+                <Field
+                  as={muiComp.TextField}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="lname"
+                  label={auth[language].lname}
+                  name="lname"
+                  color="success"
+                />
+                <ErrorMessage
+                  name="lname"
+                  component={muiComp.Typography}
+                  // @ts-ignore
+                  variant="caption"
+                  color="error"
+                />
+
+                <Field
+                  as={muiComp.TextField}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label={auth[language].email}
+                  name="email"
+                  autoComplete="email"
+                  color="success"
+                />
+                <ErrorMessage
+                  name="email"
+                  component={muiComp.Typography}
+                  // @ts-ignore
+                  variant="caption"
+                  color="error"
+                />
+
+                <Field
+                  as={muiComp.RadioGroup}
+                  name="gender"
+                  className="radioGroup"
                 >
-                  {auth[language].regions.map((name) => (
-                    <muiComp.MenuItem key={name} value={name}>
-                      {name}
-                    </muiComp.MenuItem>
-                  ))}
-                </muiComp.Select>
-              </muiComp.FormControl>
+                  <muiComp.FormControlLabel
+                    value="first"
+                    label={auth[language].gender[0]}
+                    control={<muiComp.Radio />}
+                  />
+                  <muiComp.FormControlLabel
+                    value="second"
+                    label={auth[language].gender[1]}
+                    control={<muiComp.Radio />}
+                  />
+                </Field>
+                <ErrorMessage
+                  name="gender"
+                  component={muiComp.Typography}
+                  // @ts-ignore
+                  variant="caption"
+                  color="error"
+                />
 
-              <muiComp.TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label={auth[language].password}
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                color="success"
-              />
-
-              <muiComp.FormControlLabel
-                control={<muiComp.Checkbox value="remember" color="success" />}
-                label={auth[language].agree}
-              />
-
-              <muiComp.Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                color="success"
-              >
-                {auth[language].create}
-              </muiComp.Button>
-
-              <muiComp.Grid container>
-                <muiComp.Grid item xs>
-                  <muiComp.Link
-                    href="resetPassword"
-                    variant="body2"
-                    className="greenTxt"
+                <muiComp.FormControl fullWidth sx={{ mt: 2, mb: 2 }}>
+                  <muiComp.InputLabel id="demo-simple-select-label">
+                    {auth[language].regionPlaceholder}
+                  </muiComp.InputLabel>
+                  <Field
+                    as={muiComp.Select}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="region"
+                    value={region}
+                    onChange={handleRegionChange}
                   >
-                    {auth[language].resetPassword}
-                  </muiComp.Link>
+                    {auth[language].regions.map((name) => (
+                      <muiComp.MenuItem key={name} value={name}>
+                        {name}
+                      </muiComp.MenuItem>
+                    ))}
+                  </Field>
+                </muiComp.FormControl>
+
+                <Field
+                  as={muiComp.TextField}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label={auth[language].password}
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  color="success"
+                />
+                <ErrorMessage
+                  name="password"
+                  component={muiComp.Typography}
+                  // @ts-ignore
+                  variant="caption"
+                  color="error"
+                />
+                <br />
+                <Field
+                  as={muiComp.FormControlLabel}
+                  control={<muiComp.Checkbox value="agree" color="success" />}
+                  label={auth[language].agree}
+                  name="agree"
+                />
+                <ErrorMessage
+                  name="agree"
+                  component={muiComp.Typography}
+                  // @ts-ignore
+                  variant="caption"
+                  color="error"
+                />
+
+                <muiComp.Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  color="success"
+                >
+                  {auth[language].create}
+                </muiComp.Button>
+
+                <muiComp.Grid container>
+                  <muiComp.Grid item xs>
+                    <muiComp.Link
+                      href="resetPassword"
+                      variant="body2"
+                      className="greenTxt"
+                    >
+                      {auth[language].resetPassword}
+                    </muiComp.Link>
+                  </muiComp.Grid>
+                  <muiComp.Grid item>
+                    <muiComp.Link
+                      href="signIn"
+                      variant="body2"
+                      className="greenTxt"
+                    >
+                      {auth[language].signIn}
+                    </muiComp.Link>
+                  </muiComp.Grid>
                 </muiComp.Grid>
-                <muiComp.Grid item>
-                  <muiComp.Link
-                    href="signIn"
-                    variant="body2"
-                    className="greenTxt"
-                  >
-                    {auth[language].signIn}
-                  </muiComp.Link>
-                </muiComp.Grid>
-              </muiComp.Grid>
-            </muiComp.Box>
+              </Form>
+            </Formik>
           </muiComp.Box>
         </muiComp.Grid>
       </muiComp.Grid>

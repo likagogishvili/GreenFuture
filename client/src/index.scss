@@ -6,17 +6,15 @@ body {
 @font-face {
   font-family: "SeoulBold";
   src: local("SeoulBold"),
-    // url("./assets/fonts/SeoulHangang-Bold.ttf") format("truetype");
-    url("./assets/fonts/mg_glaho_drunk.ttf") format("truetype");
-
+    url("./assets/fonts/SeoulHangang-Bold.ttf") format("truetype");
+  // url("./assets/fonts/mg_glaho_drunk.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "SeoulLight";
   src: local("SeoulLight"),
-    // url("./assets/fonts/SeoulHangang-Light.ttf") format("truetype");
-    url("./assets/fonts/mg_glaho_drunk.ttf") format("truetype");
-
+    url("./assets/fonts/SeoulHangang-Light.ttf") format("truetype");
+  // url("./assets/fonts/mg_glaho_drunk.ttf") format("truetype");
 }
 * {
   font-family: "SeoulLight" !important;

@@ -12,6 +12,18 @@ let auth = {
     agree: "ვეთანხმები წესებს და პირობებს",
     gender: ["ქალი", "კაცი"],
     regionPlaceholder: "აირჩიეთ რეგიონი",
+    formEroors: {
+      name: "შეავსეთ სახელი ველი",
+      lname: "შეავსეთ გვარი ველი",
+      emailReq: "შეავსეთ მეილი ველი",
+      emailVal: "შეიყვანეთ ვალიდური მეილი",
+      password: "შეავსეთ პაროლის ველი",
+      passwordVal:
+        "პაროლი უნდა შედგებოდეს 8 სიმბოლოსგან, ერთი მაღალი რეგისტრის სიმბოლოსგან, ერთი დაბალი რეგისტრის სიმბოლოსგან, ციფრისგან, და სპეციალური სიმბოლოსგან (!@#... )",
+      agree: "გთხოვთ დაეთანხმოთ პირობებს",
+      gender: "მონიშნეთ სქესი",
+    },
+
     regions: [
       "თბილისი",
       "აჭარის ა/რ",
@@ -56,6 +68,17 @@ let auth = {
       "Tskhinvali region",
       "A.R. of Abkhazia",
     ],
+    formEroors: {
+      name: "Name is required",
+      lname: "Last Name is required",
+      emailReq: "Email is required",
+      emailVal: "Invalid email",
+      password: "Password is required",
+      passwordVal:
+        "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character",
+      agree: "You must agree to the terms",
+      gender: "Gender is required",
+    },
   },
 };
 
